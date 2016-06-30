@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<mapper namespace="org.cbioportal.persistence.mybatis.SVMapper">
+    <cache/>
+    
+    <select id="getSVs" resultType="org.cbioportal.model.SV">
+        select
+        
+        sv.SAMPLE_ID as sampleId,
+        sv.ANNOTATION as annotation,
+        sv.BREAKPOINT_TYPE as breakpoint_type,
+        sv.COMMENTS as comments,
+        sv.CONFIDENCE_CLASS as confidence_class,
+        sv.CONN_TYPE as conn_type,
+        sv.CONNECTION_TYPE as connection_type,
+        sv.EVENT_INFO as event_info,
+        sv.MAPQ as mapq,
+        sv.NORMAL_READ_COUNT as normal_read_count,
+        sv.NORMAL_VARIANT_COUNT as normal_variant_count,
+        sv.PAIRED_END_READ_SUPPORT as paired_end_read_support,
+        sv.SITE1_CHROM as site1_chrom,
+        sv.SITE1_DESC as site1_desc,
+        sv.SITE1_GENE as site1_gene,
+        sv.SITE1_POS as site1_pos,
+        sv.SITE2_CHROM as site2_chrom,
+        sv.SITE2_DESC as site2_desc,
+        sv.SITE2_GENE as site2_gene,
+        sv.SITE2_POS as site2_pos,
+        sv.SPLIT_READ_SUPPORT as split_read_support,
+        sv.SV_CLASS_NAME as sv_class_name,
+        sv.SV_DESC as sv_desc,
+        sv.SV_LENGTH as sv_length,
+        sv.SV_VARIANT_ID as sv_variant_id,
+        sv.TUMOR_READ_COUNT as tumor_read_count,
+        sv.TUMOR_VARIANT_COUNT as tumor_variant_count,
+        sv.VARIANT_STATUS_NAME as variant_status_name,
+        
+        gene1.HUGO_GENE_SYMBOL as "gene1.hugoGeneSymbol",
+        gene1.ENTREZ_GENE_ID as "gene1.entrezGeneId",
+        gene2.HUGO_GENE_SYMBOL as "gene2.hugoGeneSymbol",
+        gene2.ENTREZ_GENE_ID as "gene2.entrezGeneId",
+                
+        from sv
+        join gene gene1 on gene1.entrezGeneId = sv.site1_gene
+        join gene gene2 on gene2.entrezGeneId = sv.site2_gene
+        
+        <where>
+            <if test="geneticProfileStableIds != null and !geneticProfileStableIds.isEmpty()">
+                genetic_profile.STABLE_ID in
+                <foreach item="item" collection="geneticProfileStableIds" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="hugoGeneSymbols != null and !hugoGeneSymbols.isEmpty()">
+                and gene.HUGO_GENE_SYMBOL in
+                <foreach item="item" collection="hugoGeneSymbols" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="sampleStableIds != null and !sampleStableIds.isEmpty()">
+                and sample.STABLE_ID in
+                <foreach item="item" collection="sampleStableIds" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+</mapper>
