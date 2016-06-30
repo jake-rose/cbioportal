@@ -24,6 +24,7 @@ DEALLOCATE PREPARE stmt;
 UPDATE info SET DB_SCHEMA_VERSION="1.2.1";
 
 ##version: 1.2.2
+drop table IF EXISTS sv;
 CREATE TABLE `sv`(
         `SAMPLE_ID` varchar(25) NOT NULL,
         `SV_VARIANT_ID` int(255) NOT NULL auto_increment,
