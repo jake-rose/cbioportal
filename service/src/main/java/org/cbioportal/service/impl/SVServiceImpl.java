@@ -19,7 +19,8 @@ public class SVServiceImpl implements SVService{
     @Autowired
     SVRepository svRepository;
     
-    public List<SV> getSVs(List<String> sampleStableIds, List<Integer> sampleVariantIds, String sampleListStableId){
-        return svRepository.getSVs(sampleStableIds, sampleVariantIds, sampleListStableId);
+    @Override
+    public List<SV> getSVs(List<String> geneticProfileStableIds, List<String> hugoGeneSymbols, List<String> sampleStableIds){
+        return svRepository.getSVs(geneticProfileStableIds, hugoGeneSymbols, sampleStableIds);
     }
 }
