@@ -19,11 +19,11 @@ public class SV implements Serializable{
     private Integer paired_end_read_support;
     private String site1_chrom;
     private String site1_desc;
-    private Gene site1_gene;
+    private String site1_gene;
     private Integer site1_pos;
     private String site2_chrom;
     private String site2_desc;
-    private Gene site2_gene;
+    private String site2_gene;
     private Integer site2_pos;
     private Integer split_read_support;
     private String sv_class_name;
@@ -33,8 +33,7 @@ public class SV implements Serializable{
     private Integer tumor_read_count;
     private Integer tumor_variant_count;
     private String variant_status_name;
-    private GeneticProfile geneticProfile;
-    private Sample sample;
+    private String geneticProfile;
     
     public String getSampleId() {
         return sampleId;
@@ -148,11 +147,11 @@ public class SV implements Serializable{
         this.site1_desc = site1_desc;
     }
 
-    public Gene getSite1_gene() {
+    public String getSite1_gene() {
         return site1_gene;
     }
 
-    public void setSite1_gene(Gene site1_gene) {
+    public void setSite1_gene(String site1_gene) {
         this.site1_gene = site1_gene;
     }
 
@@ -180,11 +179,11 @@ public class SV implements Serializable{
         this.site2_desc = site2_desc;
     }
 
-    public Gene getSite2_gene() {
+    public String getSite2_gene() {
         return site2_gene;
     }
 
-    public void setSite2_gene(Gene site2_gene) {
+    public void setSite2_gene(String site2_gene) {
         this.site2_gene = site2_gene;
     }
 
@@ -260,21 +259,14 @@ public class SV implements Serializable{
         this.variant_status_name = variant_status_name;
     }
     
-    public GeneticProfile getGeneticProfile(){
+    public String getGeneticProfile(){
         return geneticProfile;
     }
     
-    public void setGeneticProfile(GeneticProfile geneticProfile){
+    public void setGeneticProfile(String geneticProfile){
         this.geneticProfile = geneticProfile;
     }
     
-    public Sample getSample() {
-        return sample;
-    }
-
-    public void setSample(Sample sample) {
-        this.sample = sample;
-    }
 
     
    
