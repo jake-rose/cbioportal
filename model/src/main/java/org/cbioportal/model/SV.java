@@ -34,6 +34,33 @@ public class SV implements Serializable{
     private Integer tumor_variant_count;
     private String variant_status_name;
     private Integer geneticProfile;
+    private Gene gene1;
+    private Gene gene2;
+    private Sample sample;
+    
+    public Sample getSample(){
+        return sample;
+    }
+    
+    public void setSample(Sample sample){
+        this.sample = sample;
+    }
+
+    public Gene getGene1() {
+        return gene1;
+    }
+
+    public void setGene1(Gene gene1) {
+        this.gene1 = gene1;
+    }
+
+    public Gene getGene2() {
+        return gene2;
+    }
+
+    public void setGene2(Gene gene2) {
+        this.gene2 = gene2;
+    }
     
     public String getSampleId() {
         return sampleId;

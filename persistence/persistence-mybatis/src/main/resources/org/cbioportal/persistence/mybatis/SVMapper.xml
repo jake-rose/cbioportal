@@ -57,12 +57,11 @@ and open the template in the editor.
         gene2.HUGO_GENE_SYMBOL as "gene2.hugoGeneSymbol",
         gene2.ENTREZ_GENE_ID as "gene2.entrezGeneId",
         
-        
                 
         from sv
         join gene gene1 on gene1.hugoGeneSymbol = sv.site1_gene
         join gene gene2 on gene2.hugoGeneSymbol = sv.site2_gene
-        join sample on sv.SAMPLE_ID = sample.INTERNAL_ID
+        join sample on sv.SAMPLE_ID = sample.STABLE_ID
         join genetic_profile on genetic_profile.GENETIC_PROFILE_ID = sv.GENETIC_PROFILE_ID
         
         <where>
