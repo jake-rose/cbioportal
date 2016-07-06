@@ -119,7 +119,7 @@ public class ImportSVData {
         BufferedReader buffer = new BufferedReader(reader);
         String line = buffer.readLine(); //skip first line
         while((line = buffer.readLine()) != null){
-            String data[] = line.split("/t");
+            String data[] = line.split("\t");
             System.out.println("Length of data: "+data.length);
             String sampleId = data[0];
             String annotation = data[1];
