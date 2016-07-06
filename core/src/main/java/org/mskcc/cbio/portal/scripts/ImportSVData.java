@@ -120,6 +120,7 @@ public class ImportSVData {
         String line = buffer.readLine(); //skip first line
         while((line = buffer.readLine()) != null){
             String data[] = line.split("/t");
+            System.out.println("Length of data: "+data.length);
             String sampleId = data[0];
             String annotation = data[1];
             String breakpoint_type = data[2];
@@ -135,7 +136,7 @@ public class ImportSVData {
             String site1_chrom = data[12];
             String site1_desc = data[13];
             String site1_gene = data[14];
-            Integer site1_pos = !data[9].isEmpty() ? Integer.parseInt(data[15]): -1;
+            Integer site1_pos = !data[15].isEmpty() ? Integer.parseInt(data[15]): -1;
             String site2_chrom = data[16];
             String site2_desc = data[17];
             String site2_gene = data[18];
