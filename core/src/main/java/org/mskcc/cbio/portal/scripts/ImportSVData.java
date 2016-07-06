@@ -29,15 +29,17 @@ public class ImportSVData {
     @Autowired
     private SVService svService;
     
+    private File svFile;
+    private Integer geneticProfileId;
+    
     @Transactional
     public SV insertSV(String sampleId, String annotation, String breakpoint_type, String comments,
             String confidence_class, String conn_type, String connection_type, String event_info, 
-            String mapq, Integer normal_read_count, Integer normal_variant_count, Integer paired_end_read_support,
+            Integer mapq, Integer normal_read_count, Integer normal_variant_count, Integer paired_end_read_support,
             String site1_chrom, String site1_desc, String site1_gene, Integer site1_pos, String site2_chrom,
             String site2_desc, String site2_gene, Integer site2_pos, Integer split_read_support, 
             String sv_class_name, String sv_desc, Integer sv_length, Integer sv_variant_id, 
-            Integer tumor_read_count, Integer tumor_variant_count, String variant_status_name, 
-            String geneticProfile){
+            Integer tumor_read_count, Integer tumor_variant_count, String variant_status_name){
         SV sv = new SV();
         
         Map<String, Object> map = new HashMap<>();
@@ -69,7 +71,7 @@ public class ImportSVData {
         map.put("tumor_read_count", tumor_read_count);
         map.put("tumor_variant_count", tumor_variant_count);
         map.put("variant_status_name", variant_status_name);
-        map.put("geneticProfile", geneticProfile);
+        map.put("genticProfile", this.geneticProfileId);
         
         svMapper.insertSV(map);
         
@@ -101,8 +103,58 @@ public class ImportSVData {
         sv.setTumor_read_count(tumor_read_count);
         sv.setTumor_variant_count(tumor_variant_count);
         sv.setVariant_status_name(variant_status_name);
-        sv.setGeneticProfile(geneticProfile);
+        sv.setGeneticProfile(this.geneticProfileId);
         
         return sv;
+    }
+    
+    public ImportSVData(File svFile, Integer geneticProfileId){
+        this.svFile = svFile;
+        this.geneticProfileId = geneticProfileId;
+        
+    }
+    
+    public void importData() throws IOException{
+        FileReader reader = new FileReader(this.svFile);
+        BufferedReader buffer = new BufferedReader(reader);
+        String line = buffer.readLine(); //skip first line
+        while((line = buffer.readLine()) != null){
+            String data[] = line.split("/t");
+            String sampleId = data[0];
+            String annotation = data[1];
+            String breakpoint_type = data[2];
+            String comments = data[3];
+            String confidence_class = data[4];
+            String conn_type = data[5];
+            String connection_type = data[6];
+            String event_info = data[7];
+            Integer mapq = !data[8].isEmpty() ? Integer.parseInt(data[8]): -1;
+            Integer normal_read_count = !data[9].isEmpty() ? Integer.parseInt(data[9]) : -1;
+            Integer normal_variant_count = !data[10].isEmpty() ? Integer.parseInt(data[10]): -1;
+            Integer paired_end_read_support = !data[11].isEmpty() ? Integer.parseInt(data[11]): -1;
+            String site1_chrom = data[12];
+            String site1_desc = data[13];
+            String site1_gene = data[14];
+            Integer site1_pos = !data[9].isEmpty() ? Integer.parseInt(data[15]): -1;
+            String site2_chrom = data[16];
+            String site2_desc = data[17];
+            String site2_gene = data[18];
+            Integer site2_pos = !data[19].isEmpty() ? Integer.parseInt(data[19]): -1;
+            Integer split_read_support = !data[20].isEmpty() ? Integer.parseInt(data[20]): -1;
+            String sv_class_name = data[21];
+            String sv_desc = data[22];
+            Integer sv_length = !data[23].isEmpty() ? Integer.parseInt(data[23]): -1;
+            Integer sv_variant_id = !data[24].isEmpty() ? Integer.parseInt(data[24]): -1;
+            Integer tumor_read_count = !data[25].isEmpty() ? Integer.parseInt(data[25]): -1;
+            Integer tumor_variant_count = !data[26].isEmpty() ? Integer.parseInt(data[26]): -1;
+            String variant_status_name = data[27];
+            insertSV(sampleId, annotation, breakpoint_type, comments,
+                    confidence_class, conn_type, connection_type, event_info,
+                    mapq, normal_read_count, normal_variant_count, paired_end_read_support,
+                    site1_chrom, site1_desc, site1_gene, site1_pos, site2_chrom,
+                    site2_desc, site2_gene, site2_pos, split_read_support,
+                    sv_class_name, sv_desc, sv_length, sv_variant_id,
+                    tumor_read_count, tumor_variant_count, variant_status_name);
+        }
     }
 }

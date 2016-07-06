@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface SVService {
     
-    List<SV> getSVs(List<String> geneticProfileStableIds, List<String> hugoGeneSymbols, List<String> sampleStableIds);
+    List<SV> getSVs(List<Integer> geneticProfileStableIds, List<String> hugoGeneSymbols, List<String> sampleStableIds);
     
 }

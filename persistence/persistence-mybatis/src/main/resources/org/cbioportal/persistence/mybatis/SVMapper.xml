@@ -16,7 +16,7 @@ and open the template in the editor.
                 values (#{sampleId},#{annotation},#{breakpoint_type},#{comments},#{confidence_class},#{conn_type},#{connection_type},#{event_info},#{mapq},#{normal_read_count},
                 #{normal_variant_count},#{paired_end_read_support},#{site1_chrom},#{site1_desc},#{site1_gene},#{site1_pos},#{site2_chrom},#{site2_desc},#{site2_gene},#{site2_pos},
                 #{split_read_support},#{sv_class_name},#{sv_desc},#{sv_length},#{sv_variant_id},#{tumor_read_count},#{tumor_variant_count},#{variant_status_name},
-                #{geneticProfile},#{sample})
+                #{geneticProfile})
     </insert>
     
     <select id="getSVs" resultType="org.cbioportal.model.SV">

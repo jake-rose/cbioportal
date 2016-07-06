@@ -11,7 +11,7 @@ import java.util.*;
  */
 public interface SVMapper {
         
-    List<SV> getSVs(@Param("geneticProfileStableIds")List<String> geneticProfileStableIds, 
+    List<SV> getSVs(@Param("geneticProfileStableIds")List<Integer> geneticProfileStableIds, 
             @Param("hugoGeneSymbols")List<String> hugoGeneSymbols, 
             @Param("sampleStableIds")List<String> sampleStableIds);
     

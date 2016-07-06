@@ -26,7 +26,7 @@ public class SVController {
     private SVService svService;
     
     @RequestMapping(method = RequestMethod.GET, value = "/sv")
-    public List<SV> getSV(@RequestParam List<String> geneticProfileStableIds,
+    public List<SV> getSV(@RequestParam List<Integer> geneticProfileStableIds,
                                       @RequestParam List<String> hugoGeneSymbols,
                                       @RequestParam(required = false) List<String> sampleStableIds){
         

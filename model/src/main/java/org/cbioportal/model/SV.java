@@ -13,7 +13,7 @@ public class SV implements Serializable{
     private String conn_type;
     private String connection_type;
     private String event_info;
-    private String mapq;
+    private Integer mapq;
     private Integer normal_read_count;
     private Integer normal_variant_count;
     private Integer paired_end_read_support;
@@ -33,7 +33,7 @@ public class SV implements Serializable{
     private Integer tumor_read_count;
     private Integer tumor_variant_count;
     private String variant_status_name;
-    private String geneticProfile;
+    private Integer geneticProfile;
     
     public String getSampleId() {
         return sampleId;
@@ -99,11 +99,11 @@ public class SV implements Serializable{
         this.event_info = event_info;
     }
 
-    public String getMapq() {
+    public Integer getMapq() {
         return mapq;
     }
 
-    public void setMapq(String mapq) {
+    public void setMapq(Integer mapq) {
         this.mapq = mapq;
     }
 
@@ -259,11 +259,11 @@ public class SV implements Serializable{
         this.variant_status_name = variant_status_name;
     }
     
-    public String getGeneticProfile(){
+    public Integer getGeneticProfile(){
         return geneticProfile;
     }
     
-    public void setGeneticProfile(String geneticProfile){
+    public void setGeneticProfile(Integer geneticProfile){
         this.geneticProfile = geneticProfile;
     }
     
