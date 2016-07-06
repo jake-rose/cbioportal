@@ -71,7 +71,7 @@ public class ImportSVData {
         map.put("tumor_read_count", tumor_read_count);
         map.put("tumor_variant_count", tumor_variant_count);
         map.put("variant_status_name", variant_status_name);
-        map.put("genticProfile", this.geneticProfileId);
+        map.put("geneticProfile", this.geneticProfileId);
         
         svMapper.insertSV(map);
         
@@ -121,34 +121,34 @@ public class ImportSVData {
         while((line = buffer.readLine()) != null){
             String data[] = line.split("\t");
             System.out.println("Length of data: "+data.length);
-            String sampleId = data[0];
-            String annotation = data[1];
-            String breakpoint_type = data[2];
-            String comments = data[3];
-            String confidence_class = data[4];
-            String conn_type = data[5];
-            String connection_type = data[6];
-            String event_info = data[7];
+            String sampleId = !data[0].isEmpty() ? data[0] : "";
+            String annotation = !data[1].isEmpty() ? data[1] : "";
+            String breakpoint_type = !data[2].isEmpty() ? data[2] : "";
+            String comments = !data[3].isEmpty() ? data[3] : "";
+            String confidence_class = !data[4].isEmpty() ? data[4] : "";
+            String conn_type = !data[5].isEmpty() ? data[5] : "";
+            String connection_type = !data[6].isEmpty() ? data[6] : "";
+            String event_info = !data[7].isEmpty() ? data[7] : "";
             Integer mapq = !data[8].isEmpty() ? Integer.parseInt(data[8]): -1;
             Integer normal_read_count = !data[9].isEmpty() ? Integer.parseInt(data[9]) : -1;
             Integer normal_variant_count = !data[10].isEmpty() ? Integer.parseInt(data[10]): -1;
             Integer paired_end_read_support = !data[11].isEmpty() ? Integer.parseInt(data[11]): -1;
-            String site1_chrom = data[12];
-            String site1_desc = data[13];
-            String site1_gene = data[14];
+            String site1_chrom = !data[12].isEmpty() ? data[12] : "";
+            String site1_desc = !data[13].isEmpty() ? data[13] : "";
+            String site1_gene = !data[14].isEmpty() ? data[14] : "";
             Integer site1_pos = !data[15].isEmpty() ? Integer.parseInt(data[15]): -1;
-            String site2_chrom = data[16];
-            String site2_desc = data[17];
-            String site2_gene = data[18];
+            String site2_chrom = !data[16].isEmpty() ? data[16] : "";
+            String site2_desc = !data[17].isEmpty() ? data[17] : "";
+            String site2_gene = !data[18].isEmpty() ? data[18] : "";
             Integer site2_pos = !data[19].isEmpty() ? Integer.parseInt(data[19]): -1;
             Integer split_read_support = !data[20].isEmpty() ? Integer.parseInt(data[20]): -1;
-            String sv_class_name = data[21];
-            String sv_desc = data[22];
+            String sv_class_name = !data[21].isEmpty() ? data[21] : "";
+            String sv_desc = !data[22].isEmpty() ? data[22] : "";
             Integer sv_length = !data[23].isEmpty() ? Integer.parseInt(data[23]): -1;
             Integer sv_variant_id = !data[24].isEmpty() ? Integer.parseInt(data[24]): -1;
             Integer tumor_read_count = !data[25].isEmpty() ? Integer.parseInt(data[25]): -1;
             Integer tumor_variant_count = !data[26].isEmpty() ? Integer.parseInt(data[26]): -1;
-            String variant_status_name = data[27];
+            String variant_status_name = !data[27].isEmpty() ? data[27] : "";
             insertSV(sampleId, annotation, breakpoint_type, comments,
                     confidence_class, conn_type, connection_type, event_info,
                     mapq, normal_read_count, normal_variant_count, paired_end_read_support,
