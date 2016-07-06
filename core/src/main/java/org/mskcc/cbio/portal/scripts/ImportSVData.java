@@ -14,7 +14,6 @@ import org.cbioportal.persistence.mybatis.SVMapper;
 import java.io.*;
 import java.util.*;
 
-import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -72,8 +71,8 @@ public class ImportSVData {
         map.put("tumor_variant_count", tumor_variant_count);
         map.put("variant_status_name", variant_status_name);
         map.put("geneticProfile", this.geneticProfileId);
-        
-        svMapper.insertSV(map);
+        System.out.println(map);
+        svService.insertSV(map);
         
         sv.setSampleId(sampleId);
         sv.setAnnotation(annotation);
