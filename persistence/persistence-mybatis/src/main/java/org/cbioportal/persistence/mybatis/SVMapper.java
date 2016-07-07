@@ -15,6 +15,6 @@ public interface SVMapper {
             @Param("hugoGeneSymbols")List<String> hugoGeneSymbols, 
             @Param("sampleStableIds")List<String> sampleStableIds);
     
-    SV insertSV(Map<String, Object> map);
+    void insertSV(Map<String, Object> map);
     
 }

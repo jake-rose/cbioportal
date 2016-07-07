@@ -38,6 +38,10 @@
             <property name="mapperInterface" value="org.mskcc.cbio.portal.persistence.EntityAttributeMapper" />
             <property name="sqlSessionFactory" ref="sqlSessionFactory" />
         </bean>
+        <bean id="SVMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+            <property name="mapperInterface" value="org.cbioportal.persistence.mybatis.SVMapper"/>
+            <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+        </bean>
         <bean id="entityService" class="org.mskcc.cbio.portal.service.EntityService">
             <property name="entityMapper" ref="entityMapper" />
         </bean>
