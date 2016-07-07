@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import org.cbioportal.model.SV;
 
 import java.util.List;
-import java.util.*;
+import java.util.Map;
 /**
  *
  * @author jake
@@ -15,5 +15,6 @@ public interface SVMapper {
             @Param("hugoGeneSymbols")List<String> hugoGeneSymbols, 
             @Param("sampleStableIds")List<String> sampleStableIds);
     
-    void insertSV(@Param("sv")Map<String, Object> map);
+    SV insertSV(Map<String, Object> map);
+    
 }
