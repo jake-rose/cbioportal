@@ -23,8 +23,11 @@ public class ImportSVData {
     private File svFile;
     private Integer geneticProfileId;
     
-    @Autowired
-    SVService svService;
+    private static SVService svService;
+    
+    public static void setSVService(SVService value){
+        svService = value;
+    }
     
     @Transactional
     public void insertSV(String sampleId, String annotation, String breakpoint_type, String comments,

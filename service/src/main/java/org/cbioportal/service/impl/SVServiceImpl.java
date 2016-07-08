@@ -18,15 +18,11 @@ import java.util.Map;
 @Service
 public class SVServiceImpl implements SVService{
     
-    private SVMapper svMapper;
-    
     @Autowired
     SVRepository svRepository;
     
     @Autowired
-    public void setSVMapper(SVMapper svMapper){
-        this.svMapper = svMapper;
-    }
+    SVMapper svMapper;
     
     @Override
     public List<SV> getSVs(List<Integer> geneticProfileStableIds, List<String> hugoGeneSymbols, List<String> sampleStableIds){
