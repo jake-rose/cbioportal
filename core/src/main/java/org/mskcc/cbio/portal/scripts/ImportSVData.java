@@ -67,7 +67,6 @@ public class ImportSVData {
         map.put("tumor_variant_count", tumor_variant_count);
         map.put("variant_status_name", variant_status_name);
         map.put("geneticProfile", this.geneticProfileId);
-        System.out.println(map);
         svService.insertSV(map);
         /*
         sv.setSampleId(sampleId);
