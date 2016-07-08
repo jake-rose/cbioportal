@@ -42,7 +42,7 @@
             <property name="mapperInterface" value="org.cbioportal.persistence.mybatis.SVMapper"/>
             <property name="sqlSessionFactory" ref="sqlSessionFactory" />
         </bean>
-        <bean id="svService" class="org.cbioportal.service.SVService">
+        <bean id="svService" class="org.cbioportal.service.impl.SVServiceImpl">
             <property name="svMapper" ref="svMapper"/>
         </bean>
         <bean id="entityService" class="org.mskcc.cbio.portal.service.EntityService">
