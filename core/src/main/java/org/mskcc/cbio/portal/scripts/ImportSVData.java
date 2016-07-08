@@ -5,7 +5,9 @@
  */
 package org.mskcc.cbio.portal.scripts;
 
-import org.cbioportal.service.impl.SVServiceImpl;
+import org.cbioportal.service.SVService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 //import org.cbioportal.model.SV;
 
 import java.io.*;
@@ -21,6 +23,10 @@ public class ImportSVData {
     private File svFile;
     private Integer geneticProfileId;
     
+    @Autowired
+    SVService svService;
+    
+    @Transactional
     public void insertSV(String sampleId, String annotation, String breakpoint_type, String comments,
             String confidence_class, String conn_type, String connection_type, String event_info, 
             Integer mapq, Integer normal_read_count, Integer normal_variant_count, Integer paired_end_read_support,
@@ -28,8 +34,6 @@ public class ImportSVData {
             String site2_desc, String site2_gene, Integer site2_pos, Integer split_read_support, 
             String sv_class_name, String sv_desc, Integer sv_length, Integer sv_variant_id, 
             Integer tumor_read_count, Integer tumor_variant_count, String variant_status_name){
-        //SV sv = new SV();
-        SVServiceImpl svService = new SVServiceImpl();
         Map<String, Object> map = new HashMap<>();
         map.put("sampleId", sampleId);
         map.put("annotation", annotation);
