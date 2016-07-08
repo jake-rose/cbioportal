@@ -388,7 +388,7 @@ CREATE TABLE `sv`(
         `SV_VARIANT_ID` int(255) NOT NULL,
         `BREAKPOINT_TYPE` varchar(25),
         `ANNOTATION` varchar(255),
-        `COMMENTS` varchar(255),
+        `COMMENTS` varchar(2048),
         `CONFIDENCE_CLASS` varchar(25),
         `CONN_TYPE` varchar(25),
         `CONNECTION_TYPE` varchar(25),
