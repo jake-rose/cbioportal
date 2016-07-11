@@ -50,17 +50,16 @@ and open the template in the editor.
         sv.TUMOR_READ_COUNT as tumor_read_count,
         sv.TUMOR_VARIANT_COUNT as tumor_variant_count,
         sv.VARIANT_STATUS_NAME as variant_status_name,
-        sv.GENETIC_PROFILE_ID as geneticProfileID
+        sv.GENETIC_PROFILE_ID as geneticProfileID,
         
         gene1.HUGO_GENE_SYMBOL as "gene1.hugoGeneSymbol",
         gene1.ENTREZ_GENE_ID as "gene1.entrezGeneId",
         gene2.HUGO_GENE_SYMBOL as "gene2.hugoGeneSymbol",
-        gene2.ENTREZ_GENE_ID as "gene2.entrezGeneId",
-        
+        gene2.ENTREZ_GENE_ID as "gene2.entrezGeneId"
                 
         from sv
-        join gene gene1 on gene1.hugoGeneSymbol = sv.site1_gene
-        join gene gene2 on gene2.hugoGeneSymbol = sv.site2_gene
+        join gene gene1 on gene1.HUGO_GENE_SYMBOL = sv.SITE1_GENE
+        join gene gene2 on gene2.HUGO_GENE_SYMBOL = sv.SITE2_GENE
         join sample on sv.SAMPLE_ID = sample.STABLE_ID
         join genetic_profile on genetic_profile.GENETIC_PROFILE_ID = sv.GENETIC_PROFILE_ID
         
